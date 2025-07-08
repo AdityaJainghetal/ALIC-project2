@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../config/axios";
 
-const API_URL = "https://alic-website-2.onrender.com";
+const API_URL = "http://localhost:8000";
 // get all
 
 // create

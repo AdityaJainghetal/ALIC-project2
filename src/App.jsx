@@ -71,7 +71,7 @@
 
 //   useEffect(() => {
 //     const init = async () => {
-//       const res = await axios.get("https://alic-website-2.onrender.com/dynamics");
+//       const res = await axios.get("http://localhost:8000/dynamics");
 //       // console.log(res, ":KLJHKH");
 //       setRouutesData(res.data);
 //     };
@@ -392,9 +392,7 @@ function App() {
   useEffect(() => {
     const fetchRoutes = async () => {
       try {
-        const res = await axios.get(
-          "https://alic-website-2.onrender.com/dynamics"
-        );
+        const res = await axios.get("http://localhost:8000/dynamics");
         setRouutesData(res.data || []);
       } catch (err) {
         console.error("Failed to load dynamic routes:", err);

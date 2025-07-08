@@ -29,9 +29,7 @@ export const CourseDetailContent = ({ courseId }) => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(
-          `https://alic-website-2.onrender.com/api/${id}`
-        );
+        const res = await axios.get(`http://localhost:8000/api/${id}`);
         console.log(res.data);
         setProduct(res.data);
       } catch (err) {

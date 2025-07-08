@@ -52,7 +52,7 @@ const CourseLayout = () => {
       case "target":
         return (
           <TargetJudiciaryCourse
-            selectedCategoryId={selectedCategoryId}
+            selectedCategoryId={subCategoryShow}
             selectedSubCategoryId={selectedSubCategoryId}
           />
         );

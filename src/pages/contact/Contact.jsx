@@ -42,7 +42,7 @@ export const Contact = () => {
 
     try {
       const response = await axios.post(
-        "https://alic-website-2.onrender.com/contact/add",
+        "http://localhost:8000/contact/add",
         formData
       );
 

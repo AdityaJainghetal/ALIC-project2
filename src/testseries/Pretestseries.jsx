@@ -28,7 +28,7 @@ export const Pretestseries = ({ courseId }) => {
       try {
         setLoading(true);
         const res = await axios.get(
-          `https://alic-website-2.onrender.com/test/preseries/${id}`
+          `http://localhost:8000/test/preseries/${id}`
         );
         setProduct(res.data);
       } catch (err) {

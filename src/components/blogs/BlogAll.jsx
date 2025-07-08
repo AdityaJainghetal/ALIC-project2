@@ -27,7 +27,7 @@
 
 //   const fetchBlogs = async () => {
 //     try {
-//       const response = await fetch('https://alic-website-2.onrender.com/blog/display');
+//       const response = await fetch('http://localhost:8000/blog/display');
 //       if (!response.ok) throw new Error('Failed to fetch blogs');
 //       const data = await response.json();
 //       const blogsArray = Array.isArray(data) ? data : data.data || [];
@@ -160,9 +160,7 @@ export const BlogAll = () => {
 
   const fetchBlogs = async () => {
     try {
-      const response = await fetch(
-        "https://alic-website-2.onrender.com/blog/display"
-      );
+      const response = await fetch("http://localhost:8000/blog/display");
       if (!response.ok) throw new Error("Failed to fetch blogs");
       const data = await response.json();
       const blogsArray = Array.isArray(data) ? data : data.data || [];

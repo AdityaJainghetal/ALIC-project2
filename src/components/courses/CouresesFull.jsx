@@ -32,7 +32,7 @@ const CouresesFull = () => {
 
         // Fetch the main course data
         const courseResponse = await axios.get(
-          `https://alic-website-2.onrender.com/api/courses/${id}`
+          `http://localhost:8000/api/courses/${id}`
         );
         if (!courseResponse.data) {
           throw new Error("Course not found");
@@ -48,7 +48,7 @@ const CouresesFull = () => {
               : courseResponse.data.category;
 
           // const relatedResponse = await axios.get(
-          //   `https://alic-website-2.onrender.com/api/courses?category=${categoryId}&limit=4&exclude=${id}`
+          //   `http://localhost:8000/api/courses?category=${categoryId}&limit=4&exclude=${id}`
           // );
           // setRelatedCourses(relatedResponse.data);
         }

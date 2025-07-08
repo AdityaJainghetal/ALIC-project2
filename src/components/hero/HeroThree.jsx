@@ -52,8 +52,8 @@ export const HeroThree = () => {
   // useEffect(() => {
   //   const fetchBanners = async () => {
   //     try {
-  //       const response = await axios.get("https://alic-website-2.onrender.com/banner/alldisplay");
-  //       // https://alic-website-2.onrender.com/
+  //       const response = await axios.get("http://localhost:8000/banner/alldisplay");
+  //       // http://localhost:8000/
   //       setBanners(response.data);
   //     } catch (error) {
   //       console.error("Error fetching banners:", error);
@@ -202,6 +202,36 @@ export const HeroThree = () => {
           opacity: 1;
         }
 
+        @media (max-width: 768px) {
+  .form-floating select {
+    font-size: 14px;
+    padding: 18px 0px 0px 5px;
+    background-size: 14px;
+    background-position: right 8px center;
+  }
+
+  .form-floating label {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-floating select {
+    font-size: 13px;
+    padding-right: 25px;
+  }
+
+  .form-submit {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+.form-select {
+  height: 50px;
+  background-color: transparent;
+  color: #333;
+}
+
 .form-floating select {
   background: transparent;
   border: none;
@@ -234,6 +264,32 @@ export const HeroThree = () => {
 
 
 
+@media (max-width: 768px) {
+  .form-floating select {
+    font-size: 14px;
+    padding: 16px 5px 0 5px;
+    height: 42px;
+    background-size: 14px;
+    background-position: right 10px center;
+  }
+
+  .form-floating label {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-floating select {
+    font-size: 13px;
+    height: 38px;
+    padding-right: 24px;
+  }
+
+  .form-submit {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
 
 
 
@@ -313,7 +369,7 @@ export const HeroThree = () => {
                   <label>Phone Number*</label>
                 </div>
 
-                <div className="form-floating">
+                {/* <div className="form-floating">
                   <input
                     type="text"
                     name="State"
@@ -323,7 +379,57 @@ export const HeroThree = () => {
                     placeholder=" "
                   />
                   <label>Enter your State</label>
-                </div>
+                </div> */}
+
+<div className="form-floating">
+  <select
+    className="form-select"
+    name="State"
+    value={formData.State}
+    onChange={handleChange}
+    required
+  >
+    <option value="">Select your State</option>
+    <option value="Andhra Pradesh">Andhra Pradesh</option>
+    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+    <option value="Assam">Assam</option>
+    <option value="Bihar">Bihar</option>
+    <option value="Chhattisgarh">Chhattisgarh</option>
+    <option value="Goa">Goa</option>
+    <option value="Gujarat">Gujarat</option>
+    <option value="Haryana">Haryana</option>
+    <option value="Himachal Pradesh">Himachal Pradesh</option>
+    <option value="Jharkhand">Jharkhand</option>
+    <option value="Karnataka">Karnataka</option>
+    <option value="Kerala">Kerala</option>
+    <option value="Madhya Pradesh">Madhya Pradesh</option>
+    <option value="Maharashtra">Maharashtra</option>
+    <option value="Manipur">Manipur</option>
+    <option value="Meghalaya">Meghalaya</option>
+    <option value="Mizoram">Mizoram</option>
+    <option value="Nagaland">Nagaland</option>
+    <option value="Odisha">Odisha</option>
+    <option value="Punjab">Punjab</option>
+    <option value="Rajasthan">Rajasthan</option>
+    <option value="Sikkim">Sikkim</option>
+    <option value="Tamil Nadu">Tamil Nadu</option>
+    <option value="Telangana">Telangana</option>
+    <option value="Tripura">Tripura</option>
+    <option value="Uttar Pradesh">Uttar Pradesh</option>
+    <option value="Uttarakhand">Uttarakhand</option>
+    <option value="West Bengal">West Bengal</option>
+    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+    <option value="Chandigarh">Chandigarh</option>
+    <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+    <option value="Delhi">Delhi</option>
+    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+    <option value="Ladakh">Ladakh</option>
+    <option value="Lakshadweep">Lakshadweep</option>
+    <option value="Puducherry">Puducherry</option>
+  </select>
+ 
+</div>
+
 
                 <div className="form-floating">
                   {/* <input

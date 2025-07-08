@@ -114,9 +114,7 @@ export const Slider = () => {
   useEffect(() => {
     const fetchStories = async () => {
       try {
-        const response = await axios.get(
-          "https://alic-website-2.onrender.com/url/display"
-        );
+        const response = await axios.get("http://localhost:8000/url/display");
         setStories(response.data.data);
         console.log(stories, "aaaaaaaaaaaaaaaaaaaaaaaaaa");
       } catch (err) {
