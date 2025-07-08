@@ -1,5 +1,3 @@
-
-
 // import React, { useState, useEffect } from 'react';
 // import { Card, Button } from 'react-bootstrap';
 // import { Link, useParams } from 'react-router-dom';
@@ -12,9 +10,6 @@
 //     const [loading, setLoading] = useState(false);
 //     const [filteredCourses, setFilteredCourses] = useState([]);
 //     const { id: courseId } = useParams();
-
-  
-
 
 //     console.log(selectedSubCategoryId, "TARGET")
 
@@ -88,8 +83,6 @@
 
 // export default TargetJudiciaryCourse;
 
-
-
 // import React, { useState, useEffect } from 'react';
 // import { Card, Button } from 'react-bootstrap';
 // import { Link, useParams } from 'react-router-dom';
@@ -103,13 +96,12 @@
 //     const [filteredCourses, setFilteredCourses] = useState([]);
 //     const { id: courseId } = useParams();
 
-
 //     console.log(courses,"dataaaaaaaaaaaaaa")
 //     useEffect(() => {
 //         const fetchCourses = async () => {
 //             try {
 //                 setLoading(true);
-//                 const res = await axios.get('http://localhost:8000/api/alldisplay'); // Replace with your actual API endpoint
+//                 const res = await axios.get('https://alic-website-2.onrender.com/api/alldisplay'); // Replace with your actual API endpoint
 //                 setCourses(res.data);
 //                 setLoading(false);
 //             } catch (error) {
@@ -147,7 +139,7 @@
 //                                     alt={course.title}
 //                                     style={{ height: '200px', objectFit: 'cover' }}
 //                                 />
-                             
+
 //                                 <Card.Body>
 //                                     <ul className="mb-3">
 //                                         {course.features && course.features.map((feature, i) => (
@@ -205,7 +197,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const TargetJudiciaryCourse = ({ selectedCategoryId, selectedSubCategoryId }) => {
+const TargetJudiciaryCourse = ({
+  selectedCategoryId,
+  selectedSubCategoryId,
+}) => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(false);
   const [filteredCourses, setFilteredCourses] = useState([]);
@@ -214,10 +209,16 @@ const TargetJudiciaryCourse = ({ selectedCategoryId, selectedSubCategoryId }) =>
   const fetchCourses = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get("http://localhost:8000/api/alldisplay");
+      const { data } = await axios.get(
+        "https://alic-website-2.onrender.com/api/alldisplay"
+      );
       if (data) {
         setCourses(data);
-        filterCourses(data, selectedCategoryId, courseId || selectedSubCategoryId);
+        filterCourses(
+          data,
+          selectedCategoryId,
+          courseId || selectedSubCategoryId
+        );
       }
     } catch (error) {
       console.error("Error fetching courses:", error);
@@ -304,9 +305,7 @@ const TargetJudiciaryCourse = ({ selectedCategoryId, selectedSubCategoryId }) =>
                       style={{ height: "250px", objectFit: "cover" }}
                     />
                     <Card.Body className="p-3">
-                      <div className="d-flex align-items-center justify-content-center">
-                       
-                      </div>
+                      <div className="d-flex align-items-center justify-content-center"></div>
                       <Card.Title className="fs-5 text-primary mb-2">
                         {course.title}
                       </Card.Title>

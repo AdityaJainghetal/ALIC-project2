@@ -19,7 +19,7 @@
 //       setLoading(true);
 //       try {
 //         const response = await axios.get(
-//           `http://localhost:8000/api/get/${selectedSubCategoryId}`
+//           `https://alic-website-2.onrender.com/api/get/${selectedSubCategoryId}`
 //         );
 //         console.log(response, "server response");
 //       } catch (error) {
@@ -36,7 +36,7 @@
 //   const fetchCourses = async () => {
 //     setLoading(true);
 //     try {
-//       const response = await axios.get("http://localhost:8000/api/alldisplay");
+//       const response = await axios.get("https://alic-website-2.onrender.com/api/alldisplay");
 //       if (response.data) {
 //         setCourses(response.data);
 //         filterCourses(
@@ -267,13 +267,13 @@
 
 //       if (selectedSubCategoryId?._id) {
 //         const response = await axios.get(
-//           `http://localhost:8000/api/getdata/${selectedSubCategoryId._id}`
+//           `https://alic-website-2.onrender.com/api/getdata/${selectedSubCategoryId._id}`
 //         );
 //         // console.log(response.data, "Data filter");
 //         setCourses(response.data);
 //       } else {
 //         const response = await axios.get(
-//           "http://localhost:8000/api/alldisplay"
+//           "https://alic-website-2.onrender.com/api/alldisplay"
 //         );
 
 //         let filteredCourses = response.data;
@@ -481,14 +481,14 @@
 //       if (selectedSubCategoryId) {
 //         // If subcategory is selected
 //         response = await axios.get(
-//           `http://localhost:8000/api/getdata/${selectedSubCategoryId}`
+//           `https://alic-website-2.onrender.com/api/getdata/${selectedSubCategoryId}`
 //         );
 
 //         // console.log(response, "DATAT");
 //         setCourses(response.data);
 //       } else {
 //         // Fallback to all courses
-//         response = await axios.get("http://localhost:8000/api/alldisplay");
+//         response = await axios.get("https://alic-website-2.onrender.com/api/alldisplay");
 //         let filteredCourses = response.data;
 //         console.log("filteredCourse", filteredCourses);
 //         // setstoreId(response.data.subsubCategory);
@@ -683,7 +683,7 @@
 //   const fetchCourses = async () => {
 //     setLoading(true);
 //     try {
-//       const response = await axios.get("http://localhost:8000/api/alldisplay");
+//       const response = await axios.get("https://alic-website-2.onrender.com/api/alldisplay");
 //       if (response.data) {
 //         setCourses(response.data);
 //         // Prioritize courseId (subcategory ID) from useParams, then fallback to selectedSubCategoryId
@@ -884,7 +884,9 @@ const FoundationCourses = ({ selectedCategoryId, selectedSubCategoryId }) => {
   const fetchCourses = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get("http://localhost:8000/api/alldisplay");
+      const { data } = await axios.get(
+        "https://alic-website-2.onrender.com/api/alldisplay"
+      );
       if (data) {
         setCourses(data);
         filterCourses(
@@ -893,11 +895,6 @@ const FoundationCourses = ({ selectedCategoryId, selectedSubCategoryId }) => {
           courseId || selectedSubCategoryId
         );
       }
-
-
-      
-
-
     } catch (error) {
       console.error("Error fetching courses:", error);
       toast.error("Failed to load courses. Please try again.");
