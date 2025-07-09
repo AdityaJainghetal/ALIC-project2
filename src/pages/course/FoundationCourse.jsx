@@ -885,7 +885,7 @@ const FoundationCourses = ({ selectedCategoryId, selectedSubCategoryId }) => {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        "https://alic-website-2.onrender.com/api/alldisplay"
+        "https://alic-website-2-1.onrender.com/api/alldisplay"
       );
       if (data) {
         setCourses(data);
@@ -905,20 +905,20 @@ const FoundationCourses = ({ selectedCategoryId, selectedSubCategoryId }) => {
 
   const filterCourses = (coursesList, categoryId, subCategoryId) => {
     let filtered = coursesList;
-
+    console.log(filtered, "filterCourses");
     if (courseId) {
       filtered = filtered.filter(
         (course) => course?.subsubCategory?._id === courseId
-      );
-    } else if (subCategoryId) {
-      filtered = filtered.filter(
-        (course) => course.subCategory?._id === subCategoryId
       );
     } else if (categoryId) {
       filtered = filtered.filter(
         (course) => course.category?._id === categoryId
       );
     }
+
+    console.log(courseId, "courseId");
+    console.log(subCategoryId, "subCategoryId");
+    console.log(categoryId, "categoryId");
 
     setFilteredCourses(filtered);
   };
@@ -959,6 +959,7 @@ const FoundationCourses = ({ selectedCategoryId, selectedSubCategoryId }) => {
 
               return (
                 <div className="col-md-6" key={courseId}>
+                  {/* <h3>AAAAAA</h3> */}
                   <Card className="h-100 shadow-sm border-0">
                     <Card.Img
                       variant="top"

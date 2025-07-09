@@ -30,7 +30,7 @@ export const CoursesOne = () => {
     const fetchCourses = async () => {
       try {
         const response = await fetch(
-          "https://alic-website-2.onrender.com/api/allcourse"
+          "https://alic-website-2-1.onrender.com/api/allcourse"
         );
         if (!response.ok) {
           throw new Error("Failed to fetch courses");
@@ -148,7 +148,7 @@ export default CoursesOne;
 
 // export const CoursesOne = () => {
 //   const [courses, setCourses] = useState([]);
-//   const api = 'https://alic-website-2.onrender.com/api/allcourse';
+//   const api = 'https://alic-website-2-1.onrender.com/api/allcourse';
 
 //   useEffect(() => {
 //     const fetchCourses = async () => {

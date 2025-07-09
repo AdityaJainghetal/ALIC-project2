@@ -15,7 +15,7 @@
 
 //   const fetchContacts = async () => {
 //     try {
-//       const response = await axios.get("https://alic-website-2.onrender.com/event");
+//       const response = await axios.get("https://alic-website-2-1.onrender.com/event");
 //       setContacts(response.data);
 //       setIsLoading(false);
 //     } catch (error) {
@@ -278,7 +278,7 @@ export const EventOne = () => {
   const fetchContacts = async () => {
     try {
       const response = await axios.get(
-        "https://alic-website-2.onrender.com/event"
+        "https://alic-website-2-1.onrender.com/event"
       );
       setContacts(response.data);
       setIsLoading(false);

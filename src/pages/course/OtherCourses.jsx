@@ -19,7 +19,7 @@ const OtherCoursesSlider = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        "https://alic-website-2.onrender.com/othercourse"
+        "https://alic-website-2-1.onrender.com/othercourse"
       );
       if (response.data) {
         setCourses(response.data);

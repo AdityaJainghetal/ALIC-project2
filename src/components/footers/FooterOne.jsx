@@ -231,7 +231,7 @@
 //     }
 //   };
 
-//   const api = "https://alic-website-2.onrender.com/social";
+//   const api = "https://alic-website-2-1.onrender.com/social";
 
 //     const fetchSocialLinks = async () => {
 //       setLoading(true);
@@ -249,7 +249,7 @@
 //       fetchSocialLinks();
 //     }, []);
 
-//     const apis = "https://alic-website-2.onrender.com/playstore/alldisplay";
+//     const apis = "https://alic-website-2-1.onrender.com/playstore/alldisplay";
 //      const fetchSocialplaystoreLinks = async () => {
 //       setLoading(true);
 //       try {
@@ -568,13 +568,13 @@ export const FooterOne = () => {
 
         // Fetch social links
         const socialResponse = await axios.get(
-          "https://alic-website-2.onrender.com/social"
+          "https://alic-website-2-1.onrender.com/social"
         );
         setSocialLinks(socialResponse.data.data);
 
         // Fetch playstore links
         const playstoreResponse = await axios.get(
-          "https://alic-website-2.onrender.com/playstore/alldisplay"
+          "https://alic-website-2-1.onrender.com/playstore/alldisplay"
         );
         setPlaystoreLinks(playstoreResponse.data);
       } catch (error) {

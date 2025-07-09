@@ -71,7 +71,7 @@
 
 //   useEffect(() => {
 //     const init = async () => {
-//       const res = await axios.get("https://alic-website-2.onrender.com/dynamics");
+//       const res = await axios.get("https://alic-website-2-1.onrender.com/dynamics");
 //       // console.log(res, ":KLJHKH");
 //       setRouutesData(res.data);
 //     };
@@ -393,7 +393,7 @@ function App() {
     const fetchRoutes = async () => {
       try {
         const res = await axios.get(
-          "https://alic-website-2.onrender.com/dynamics"
+          "https://alic-website-2-1.onrender.com/dynamics"
         );
         setRouutesData(res.data || []);
       } catch (err) {

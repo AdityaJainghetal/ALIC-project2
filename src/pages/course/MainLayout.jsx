@@ -24,7 +24,7 @@ const CourseLayout = () => {
   const [subCategoryShow, setSubCategoryShow] = useState([]);
   const { id } = useParams();
 
-  console.log(id, "ididididididid");
+  // console.log(id, "ididididididid");
 
   const [loading, setLoading] = useState(false);
 
@@ -87,10 +87,12 @@ const CourseLayout = () => {
 
   return (
     <Layout header={9} footer={1}>
+
       <Container fluid>
         <Row>
           <CoursesAllGrid selectedSubCategoryId={selectedSubCategoryId} />
           <Col md={3} lg={2} className="p-0">
+         
             <MpSidebar
               activeTab={activeTab}
               setActiveTab={setActiveTab}

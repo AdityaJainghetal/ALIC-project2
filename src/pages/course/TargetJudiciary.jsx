@@ -101,7 +101,7 @@
 //         const fetchCourses = async () => {
 //             try {
 //                 setLoading(true);
-//                 const res = await axios.get('https://alic-website-2.onrender.com/api/alldisplay'); // Replace with your actual API endpoint
+//                 const res = await axios.get('https://alic-website-2-1.onrender.com/api/alldisplay'); // Replace with your actual API endpoint
 //                 setCourses(res.data);
 //                 setLoading(false);
 //             } catch (error) {
@@ -206,11 +206,12 @@ const TargetJudiciaryCourse = ({
   const [filteredCourses, setFilteredCourses] = useState([]);
   const { id: courseId } = useParams();
 
+  // console.log(courseId,"dataaaaaaaaaaaaaaaa")
   const fetchCourses = async () => {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        "https://alic-website-2.onrender.com/api/alldisplay"
+        `https://alic-website-2-1.onrender.com/api/getrecordedcourse/${courseId}`
       );
       if (data) {
         setCourses(data);
@@ -220,6 +221,7 @@ const TargetJudiciaryCourse = ({
           courseId || selectedSubCategoryId
         );
       }
+      // console.log(data,"Course dataaaaaaaaaaaaaaaaaa")
     } catch (error) {
       console.error("Error fetching courses:", error);
       toast.error("Failed to load courses. Please try again.");
@@ -233,14 +235,7 @@ const TargetJudiciaryCourse = ({
     console.log("SubcategoryId:", subCategoryId);
     console.log("CategoryId:", categoryId);
 
-    coursesList.forEach((course) => {
-      console.log("Course Title:", course.title);
-      console.log("subsubCategory ID:", course?.subsubCategory?._id);
-      console.log("subsubCategory Name:", course?.subsubCategory?.name);
-      console.log("subCategory ID:", course?.subCategory?._id);
-      console.log("category ID:", course?.category?._id);
-      console.log("----");
-    });
+    coursesList.forEach((course) => {});
 
     let filtered = coursesList;
 
@@ -286,6 +281,7 @@ const TargetJudiciaryCourse = ({
             All Foundation Courses
           </h3>
         )}
+        {/* <h1>aaaaaaaaaaaaaaaaaaaaaaa</h1> */}
 
         <div className="row g-4">
           {filteredCourses.length > 0 ? (

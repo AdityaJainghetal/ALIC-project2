@@ -295,7 +295,7 @@ export const FaqOne = () => {
     const fetchFAQs = async () => {
       try {
         const response = await axios.get(
-          "https://alic-website-2.onrender.com/faq/"
+          "https://alic-website-2-1.onrender.com/faq/"
         );
         setFaqs(response.data.data);
       } catch (err) {

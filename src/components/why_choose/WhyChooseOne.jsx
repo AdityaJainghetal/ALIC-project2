@@ -13,7 +13,7 @@ export const WhyChooseOne = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const api = "https://alic-website-2.onrender.com/choose/display";
+  const api = "https://alic-website-2-1.onrender.com/choose/display";
 
   useEffect(() => {
     const fetchItems = async () => {

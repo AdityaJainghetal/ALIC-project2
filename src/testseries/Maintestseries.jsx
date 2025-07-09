@@ -30,7 +30,7 @@ export const Maintestseries = ({ courseId }) => {
       try {
         setLoading(true);
         const res = await axios.get(
-          `https://alic-website-2.onrender.com/main/maintestseries/${id}`
+          `https://alic-website-2-1.onrender.com/main/maintestseries/${id}`
         );
         setProduct(res.data);
       } catch (err) {

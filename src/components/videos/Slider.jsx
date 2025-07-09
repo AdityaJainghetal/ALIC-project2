@@ -115,10 +115,10 @@ export const Slider = () => {
     const fetchStories = async () => {
       try {
         const response = await axios.get(
-          "https://alic-website-2.onrender.com/url/display"
+          "https://alic-website-2-1.onrender.com/url/display"
         );
         setStories(response.data.data);
-        console.log(stories, "aaaaaaaaaaaaaaaaaaaaaaaaaa");
+        // console.log(stories, "aaaaaaaaaaaaaaaaaaaaaaaaaa");
       } catch (err) {
         setError("Failed to fetch video URLs");
       } finally {

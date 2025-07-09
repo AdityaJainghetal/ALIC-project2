@@ -40,7 +40,7 @@
 //    useEffect(() => {
 //     const fetchStories = async () => {
 //       try {
-//         const response = await fetch("https://alic-website-2.onrender.com/success/display");
+//         const response = await fetch("https://alic-website-2-1.onrender.com/success/display");
 //         if (!response.ok) {
 //           throw new Error("Failed to fetch success stories");
 //         }
@@ -153,7 +153,7 @@ export const SuccessStory = () => {
     const fetchStories = async () => {
       try {
         const response = await fetch(
-          "https://alic-website-2.onrender.com/success/display"
+          "https://alic-website-2-1.onrender.com/success/display"
         );
         if (!response.ok) {
           throw new Error("Failed to fetch success stories");

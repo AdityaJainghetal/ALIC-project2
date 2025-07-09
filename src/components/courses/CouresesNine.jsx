@@ -19,12 +19,12 @@
 //   const fetchCourseAndRelated = async () => {
 //     try {
 //       setLoading(true);
-//       const res = await axios.get(`https://alic-website-2.onrender.com/api/coursess/${id}`);
+//       const res = await axios.get(`https://alic-website-2-1.onrender.com/api/coursess/${id}`);
 //       const mainCourse = res.data;
 //       setProduct(mainCourse);
 
 //       const relatedRes = await axios.get(
-//         `https://alic-website-2.onrender.com/api/courses?category=${mainCourse.category._id}`
+//         `https://alic-website-2-1.onrender.com/api/courses?category=${mainCourse.category._id}`
 //       );
 //       const filtered = relatedRes.data.filter((p) => p._id !== mainCourse._id);
 //       setRelatedProducts(filtered);
@@ -186,7 +186,7 @@ export const CouresesNine = () => {
         setLoading(true);
         // Fetch main course by ID
         const res = await axios.get(
-          `https://alic-website-2.onrender.com/api/courses/${id}`
+          `https://alic-website-2-1.onrender.com/api/courses/${id}`
         );
         const main = res.data;
         console.log(main);
@@ -194,7 +194,7 @@ export const CouresesNine = () => {
 
         // Now fetch all courses with the same category ID
         const sameCategoryRes = await axios.get(
-          `https://alic-website-2.onrender.com/api/courses/category/${main.category._id}`
+          `https://alic-website-2-1.onrender.com/api/courses/category/${main.category._id}`
         );
         // Filter out the main course from the list
         const filtered = sameCategoryRes.data.filter(

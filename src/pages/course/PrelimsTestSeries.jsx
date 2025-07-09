@@ -76,7 +76,7 @@
 //   const fetchCourses = async () => {
 //     setLoading(true);
 //     try {
-//       const response = await axios.get("https://alic-website-2.onrender.com/test/display");
+//       const response = await axios.get("https://alic-website-2-1.onrender.com/test/display");
 //       if (response.data && Array.isArray(response.data.data)) {
 //         setCourses(response.data.data);
 //       } else {
@@ -329,7 +329,7 @@ const PrelimsTestSeries = ({ selectedCategoryId }) => {
     setLoading(true);
     try {
       const response = await axios.get(
-        "https://alic-website-2.onrender.com/test/display"
+        "https://alic-website-2-1.onrender.com/test/display"
       );
       if (response.data && Array.isArray(response.data.data)) {
         setCourses(response.data.data);

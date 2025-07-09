@@ -146,7 +146,7 @@ const DetailSection = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://alic-website-2.onrender.com/whatsnew/${id}`
+          `https://alic-website-2-1.onrender.com/whatsnew/${id}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch data");

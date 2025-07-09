@@ -92,7 +92,7 @@
 //   useEffect(() => {
 //     const fetchWhatsNew = async () => {
 //       try {
-//         const response = await fetch("https://alic-website-2.onrender.com/whatsnew/alldisplay");
+//         const response = await fetch("https://alic-website-2-1.onrender.com/whatsnew/alldisplay");
 //         if (!response.ok) {
 //           throw new Error("Failed to fetch WhatsNew entries");
 //         }
@@ -224,7 +224,7 @@ const Card = ({ date, content, images, PDFbrochure, id }) => {
     e.stopPropagation(); // Prevent triggering the card click
     try {
       // Download image
-      if (images) {
+      if (images && typeof images === "string") {
         const response = await fetch(images);
         if (!response.ok) throw new Error("Failed to fetch image");
         const blob = await response.blob();
@@ -239,7 +239,7 @@ const Card = ({ date, content, images, PDFbrochure, id }) => {
       }
 
       // Download PDF
-      if (PDFbrochure) {
+      if (PDFbrochure && typeof PDFbrochure === "string") {
         const response = await fetch(PDFbrochure);
         if (!response.ok) throw new Error("Failed to fetch PDF");
         const blob = await response.blob();
@@ -308,7 +308,7 @@ export default function RecentUpdates() {
     const fetchWhatsNew = async () => {
       try {
         const response = await fetch(
-          "https://alic-website-2.onrender.com/whatsnew/alldisplay"
+          "https://alic-website-2-1.onrender.com/whatsnew/alldisplay"
         );
         if (!response.ok) {
           throw new Error("Failed to fetch WhatsNew entries");
@@ -406,7 +406,7 @@ export default function RecentUpdates() {
               whatsNew.map((item, idx) => (
                 <Card
                   key={idx}
-                  id={item._id} // Pass the ID to the Card component
+                  id={item._id} // Pass the ID to the
                   date={
                     item.createdAt
                       ? new Date(item.createdAt).toLocaleDateString()

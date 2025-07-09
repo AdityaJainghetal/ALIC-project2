@@ -31,9 +31,9 @@ const TestSeriesDetail = () => {
 
         // Fetch the main test series data
         const response = await axios.get(
-          `https://alic-website-2.onrender.com/test/preseries/${id}`
+          `https://alic-website-2-1.onrender.com/test/preseries/${id}`
         );
-        console.log(response, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        // console.log(response, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         if (!response.data) {
           throw new Error("Test series not found");
         }
@@ -48,7 +48,7 @@ const TestSeriesDetail = () => {
               : response.data.category;
 
           // const relatedResponse = await axios.get(
-          //   `https://alic-website-2.onrender.com/test/preseries?category=${categoryId}&limit=4&exclude=${id}`
+          //   `https://alic-website-2-1.onrender.com/test/preseries?category=${categoryId}&limit=4&exclude=${id}`
           // );
           // setRelatedTestSeries(relatedResponse.data);
         }

@@ -30,7 +30,7 @@ export const MarqueeStrike = () => {
     const fetchDiscounts = async () => {
       try {
         const response = await axios.get(
-          "https://alic-website-2.onrender.com/discount/display"
+          "https://alic-website-2-1.onrender.com/discount/display"
         );
         setDiscounts(response.data.data || []);
         setLoading(false);

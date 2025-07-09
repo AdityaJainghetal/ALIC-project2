@@ -30,7 +30,7 @@ export const CourseDetailContent = ({ courseId }) => {
       try {
         setLoading(true);
         const res = await axios.get(
-          `https://alic-website-2.onrender.com/api/${id}`
+          `https://alic-website-2-1.onrender.com/api/${id}`
         );
         console.log(res.data);
         setProduct(res.data);
