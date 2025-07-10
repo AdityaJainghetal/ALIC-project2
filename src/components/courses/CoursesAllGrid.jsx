@@ -312,7 +312,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { fetchSubsubcategory } from "../../components/api";
 import { toast } from "react-toastify";
 
-export const CoursesAllGrid = ({ selectedSubCategoryId }) => {
+export const CoursesAllGrid = ({ selectedSubCategoryId, onCategorySelect }) => {
   const [subsubCategories, setSubsubCategories] = useState([]);
   const [duplicateNameIds, setDuplicateNameIds] = useState([]);
   const [loading, setLoading] = useState(true);

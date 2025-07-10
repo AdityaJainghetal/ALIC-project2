@@ -868,6 +868,608 @@
 
 // export default FoundationCourses;
 
+// import React, { useState, useEffect } from "react";
+// import { Card, Button } from "react-bootstrap";
+// import { Link, useParams } from "react-router-dom";
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import axios from "axios";
+// import { toast } from "react-toastify";
+
+// const FoundationCourses = ({ selectedCategoryId, selectedSubCategoryId }) => {
+//   const [courses, setCourses] = useState([]);
+//   const [loading, setLoading] = useState(false);
+//   const [filteredCourses, setFilteredCourses] = useState([]);
+//   const { id: courseId } = useParams();
+
+//   const fetchCourses = async () => {
+//     setLoading(true);
+//     try {
+//       const { data } = await axios.get(
+//         "http://localhost:8000/api/alldisplay"
+//       );
+//       if (data) {
+//         setCourses(data);
+//         filterCourses(
+//           data,
+//           selectedCategoryId,
+//           courseId || selectedSubCategoryId
+//         );
+//       }
+//     } catch (error) {
+//       console.error("Error fetching courses:", error);
+//       toast.error("Failed to load courses. Please try again.");
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   const filterCourses = (coursesList, categoryId, subCategoryId) => {
+//     let filtered = coursesList;
+//     console.log(filtered, "filterCourses");
+//     if (courseId) {
+//       filtered = filtered.filter(
+//         (course) => course?.subsubCategory?._id === courseId
+//       );
+//     } else if (categoryId) {
+//       filtered = filtered.filter(
+//         (course) => course.category?._id === categoryId
+//       );
+//     }
+
+//     console.log(courseId, "courseId");
+//     console.log(subCategoryId, "subCategoryId");
+//     console.log(categoryId, "categoryId");
+
+//     setFilteredCourses(filtered);
+//   };
+
+//   useEffect(() => {
+//     fetchCourses();
+//   }, [courseId, selectedCategoryId, selectedSubCategoryId]);
+
+//   if (loading) {
+//     return (
+//       <div className="py-4 text-center" style={{ backgroundColor: "#f5f7fa" }}>
+//         <div className="spinner-border text-primary" role="status">
+//           <span className="visually-hidden">Loading...</span>
+//         </div>
+//       </div>
+//     );
+//   }
+
+//   const showAllCoursesHeader =
+//     !courseId && !selectedCategoryId && !selectedSubCategoryId;
+
+//   return (
+//     <div className="py-4" style={{ backgroundColor: "#f5f7fa" }}>
+//       <div className="container">
+//         {showAllCoursesHeader && (
+//           <h3 className="text-center mb-4 fw-bold text-dark">
+//             All Foundation Courses
+//           </h3>
+//         )}
+
+//         <div className="row g-4">
+//           {filteredCourses.length > 0 ? (
+//             filteredCourses.map((course) => {
+//               const courseId = course._id || course.id;
+//               const imageSrc = Array.isArray(course.images)
+//                 ? course.images[0]
+//                 : course.images;
+
+//               return (
+//                 <div className="col-md-6" key={courseId}>
+//                   {/* <h3>AAAAAA</h3> */}
+//                   <Card className="h-100 shadow-sm border-0">
+//                     <Card.Img
+//                       variant="top"
+//                       src={imageSrc}
+//                       alt="Course"
+//                       style={{ height: "250px", objectFit: "cover" }}
+//                     />
+//                     <Card.Body className="p-3">
+//                       <div className="d-flex align-items-center justify-content-center">
+//                         <span className="text-center fw-bold fs-5">
+//                           {course.subCategory?.name || "N/A"}
+//                         </span>
+//                       </div>
+//                       <Card.Title className="fs-5 text-primary mb-2">
+//                         {course.title}
+//                       </Card.Title>
+//                       <div className="small">
+//                         <CourseDetail
+//                           label="Judiciary:"
+//                           value={course?.subsubCategory?.name}
+//                         />
+//                         <CourseDetail
+//                           label="Price:"
+//                           value={`₹ ${course.Price}`}
+//                         />
+//                         <CourseDetail
+//                           label="Duration:"
+//                           value={course.Durations}
+//                         />
+//                         <CourseDetail
+//                           label="Faculty:"
+//                           value={course.TrainerName}
+//                         />
+//                         <CourseDetail
+//                           label="Type:"
+//                           value={course.category?.name}
+//                         />
+//                       </div>
+//                     </Card.Body>
+//                     <Card.Footer className="bg-white border-0 p-3 pt-0">
+//                       <Link
+//                         to={`/courses/${courseId}`}
+//                         className="btn w-100 mb-2"
+//                         style={{ backgroundColor: "#C81A1E", color: "white" }}
+//                       >
+//                         View Details
+//                       </Link>
+//                       <div className="d-flex gap-2">
+//                         <Button
+//                           variant="outline-danger"
+//                           className="w-50 btn-sm"
+//                         >
+//                           Free Demo
+//                         </Button>
+//                         <Link className="w-50" to={`/courses/${courseId}`}>
+//                           <Button
+//                             variant="outline-dark"
+//                             className="w-100 btn-sm"
+//                           >
+//                             Explore
+//                           </Button>
+//                         </Link>
+//                       </div>
+//                     </Card.Footer>
+//                   </Card>
+//                 </div>
+//               );
+//             })
+//           ) : (
+//             <NoCoursesFound
+//               hasSelection={
+//                 !!(courseId || selectedCategoryId || selectedSubCategoryId)
+//               }
+//               onRetry={fetchCourses}
+//             />
+//           )}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// const CourseDetail = ({ label, value }) => (
+//   <div className="d-flex justify-content-between">
+//     <span className="fw-semibold">{label}</span>
+//     <span>{value || "N/A"}</span>
+//   </div>
+// );
+
+// const NoCoursesFound = ({ hasSelection, onRetry }) => (
+//   <div className="col-12 text-center py-5">
+//     <h5>No courses found {hasSelection ? "for this selection" : ""}</h5>
+//     {!hasSelection && (
+//       <Button variant="primary" onClick={onRetry} className="mt-3">
+//         Retry Loading Courses
+//       </Button>
+//     )}
+//   </div>
+// );
+
+// export default FoundationCourses;
+
+// import React, { useState, useEffect } from "react";
+// import { Card, Button } from "react-bootstrap";
+// import { Link, useParams } from "react-router-dom";
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import axios from "axios";
+// import { toast } from "react-toastify";
+
+// const FoundationCourses = ({ selectedCategoryId, selectedSubCategoryId }) => {
+//   const [courses, setCourses] = useState([]);
+//   const [loading, setLoading] = useState(false);
+//   const [filteredCourses, setFilteredCourses] = useState([]);
+//   const { id: courseId } = useParams();
+// console.log(courseId,"idddddd")
+//   const fetchCourses = async () => {
+//     setLoading(true);
+//     try {
+//       const { data } = await axios.get(
+//         "http://localhost:8000/api/alldisplay"
+//       );
+//       if (data) {
+//         setCourses(data);
+//         filterCourses(data);
+//       }
+//     } catch (error) {
+//       console.error("Error fetching courses:", error);
+//       toast.error("Failed to load courses. Please try again.");
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   const filterCourses = (coursesList) => {
+//     let filtered = [...coursesList];
+
+//     // First filter by category if selected
+//     if (selectedCategoryId) {
+//       filtered = filtered.filter(
+//         (course) => course.category?._id === selectedCategoryId
+//       );
+//     }
+
+//     // Then filter by subcategory if selected
+//     if (selectedSubCategoryId) {
+//       filtered = filtered.filter(
+//         (course) => course.subCategory?._id === selectedSubCategoryId
+//       );
+//     }
+
+//     // Finally filter by courseId from URL if present
+//     if (courseId) {
+//       filtered = filtered.filter(
+//         (course) => course._id === courseId || course.subsubCategory?._id === courseId
+//       );
+//     }
+
+//     setFilteredCourses(filtered);
+//   };
+
+//   useEffect(() => {
+//     fetchCourses();
+//   }, [courseId, selectedCategoryId, selectedSubCategoryId]);
+
+//   if (loading) {
+//     return (
+//       <div className="py-4 text-center" style={{ backgroundColor: "#f5f7fa" }}>
+//         <div className="spinner-border text-primary" role="status">
+//           <span className="visually-hidden">Loading...</span>
+//         </div>
+//       </div>
+//     );
+//   }
+
+//   const showAllCoursesHeader =
+//     !courseId && !selectedCategoryId && !selectedSubCategoryId;
+
+//   return (
+//     <div className="py-4" style={{ backgroundColor: "#f5f7fa" }}>
+//       <div className="container">
+//         {showAllCoursesHeader && (
+//           <h3 className="text-center mb-4 fw-bold text-dark">
+//             All Foundation Courses
+//           </h3>
+//         )}
+
+//         <div className="row g-4">
+//           {filteredCourses.length > 0 ? (
+//             filteredCourses.map((course) => {
+//               const courseId = course._id;
+//               const imageSrc = Array.isArray(course.images)
+//                 ? course.images[0]
+//                 : course.images;
+
+//               return (
+//                 <div className="col-md-6" key={courseId}>
+//                   <Card className="h-100 shadow-sm border-0">
+//                     <Card.Img
+//                       variant="top"
+//                       src={imageSrc}
+//                       alt="Course"
+//                       style={{ height: "250px", objectFit: "cover" }}
+//                     />
+//                     <Card.Body className="p-3">
+//                       <div className="d-flex align-items-center justify-content-center">
+//                         <span className="text-center fw-bold fs-5">
+//                           {course.subCategory?.name || "N/A"}
+//                         </span>
+//                       </div>
+//                       <Card.Title className="fs-5 text-primary mb-2">
+//                         {course.title}
+//                       </Card.Title>
+//                       <div className="small">
+//                         <CourseDetail
+//                           label="Judiciary:"
+//                           value={course?.subsubCategory?.name}
+//                         />
+//                         <CourseDetail
+//                           label="Price:"
+//                           value={`₹ ${course.Price}`}
+//                         />
+//                         <CourseDetail
+//                           label="Duration:"
+//                           value={course.Durations}
+//                         />
+//                         <CourseDetail
+//                           label="Faculty:"
+//                           value={course.TrainerName}
+//                         />
+//                         <CourseDetail
+//                           label="Type:"
+//                           value={course.category?.name}
+//                         />
+//                       </div>
+//                     </Card.Body>
+//                     <Card.Footer className="bg-white border-0 p-3 pt-0">
+//                       <Link
+//                         to={`/courses/${courseId}`}
+//                         className="btn w-100 mb-2"
+//                         style={{ backgroundColor: "#C81A1E", color: "white" }}
+//                       >
+//                         View Details
+//                       </Link>
+//                       <div className="d-flex gap-2">
+//                         <Button
+//                           variant="outline-danger"
+//                           className="w-50 btn-sm"
+//                         >
+//                           Free Demo
+//                         </Button>
+//                         <Link className="w-50" to={`/courses/${courseId}`}>
+//                           <Button
+//                             variant="outline-dark"
+//                             className="w-100 btn-sm"
+//                           >
+//                             Explore
+//                           </Button>
+//                         </Link>
+//                       </div>
+//                     </Card.Footer>
+//                   </Card>
+//                 </div>
+//               );
+//             })
+//           ) : (
+//             <NoCoursesFound
+//               hasSelection={
+//                 !!(courseId || selectedCategoryId || selectedSubCategoryId)
+//               }
+//               onRetry={fetchCourses}
+//             />
+//           )}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// const CourseDetail = ({ label, value }) => (
+//   <div className="d-flex justify-content-between">
+//     <span className="fw-semibold">{label}</span>
+//     <span>{value || "N/A"}</span>
+//   </div>
+// );
+
+// const NoCoursesFound = ({ hasSelection, onRetry }) => (
+//   <div className="col-12 text-center py-5">
+//     <h5>No courses found {hasSelection ? "for this selection" : ""}</h5>
+//     {!hasSelection && (
+//       <Button variant="primary" onClick={onRetry} className="mt-3">
+//         Retry Loading Courses
+//       </Button>
+//     )}
+//   </div>
+// );
+
+// export default FoundationCourses;
+
+// import React, { useState, useEffect } from "react";
+// import { Card, Button } from "react-bootstrap";
+// import { Link, useParams } from "react-router-dom";
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import axios from "axios";
+// import { toast } from "react-toastify";
+
+// const FoundationCourses = ({
+//   selectedCategoryId,
+//   selectedSubCategoryId,
+//   useNewFilter = false,
+// }) => {
+//   const [courses, setCourses] = useState([]);
+//   const [loading, setLoading] = useState(false);
+//   const [filteredCourses, setFilteredCourses] = useState([]);
+//   const { id: courseId } = useParams();
+
+//   const fetchCourses = async () => {
+//     setLoading(true);
+
+//     try {
+//       const { data } = await axios.get("http://localhost:8000/api/alldisplay");
+//       if (data) {
+//         setCourses(data);
+//         filterCourses(data);
+//       }
+//     } catch (error) {
+//       console.error("Error fetching courses:", error);
+//       toast.error("Failed to load courses. Please try again.");
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   const filterCourses = (coursesList) => {
+//     let filtered = [...coursesList];
+
+//     if (useNewFilter) {
+//       // New filtering logic (from second component)
+//       if (selectedCategoryId) {
+//         filtered = filtered.filter(
+//           (course) => course.category?._id === selectedCategoryId
+//         );
+//       }
+//       if (selectedSubCategoryId && selectedSubCategoryId !== "") {
+//         filtered = filtered.filter(
+//           (course) =>
+//             course.subCategory?._id?.toString() ===
+//             selectedSubCategoryId?.toString()
+//         );
+//       }
+
+//       if (courseId) {
+//         filtered = filtered.filter(
+//           (course) =>
+//             course._id === courseId || course.subsubCategory?._id === courseId
+//         );
+//       }
+//     } else {
+//       // Original filtering logic (from first component)
+//       if (courseId) {
+//         filtered = filtered.filter(
+//           (course) => course?.subsubCategory?._id === courseId
+//         );
+//       } else if (selectedCategoryId) {
+//         filtered = filtered.filter(
+//           (course) => course.category?._id === selectedCategoryId
+//         );
+//       }
+//     }
+
+//     setFilteredCourses(filtered);
+//   };
+
+//   useEffect(() => {
+//     fetchCourses();
+//   }, [courseId, selectedCategoryId, selectedSubCategoryId]);
+
+//   if (loading) {
+//     return (
+//       <div className="py-4 text-center" style={{ backgroundColor: "#f5f7fa" }}>
+//         <div className="spinner-border text-primary" role="status">
+//           <span className="visually-hidden">Loading...</span>
+//         </div>
+//       </div>
+//     );
+//   }
+
+//   const showAllCoursesHeader =
+//     !courseId && !selectedCategoryId && !selectedSubCategoryId;
+
+//   return (
+//     <div className="py-4" style={{ backgroundColor: "#f5f7fa" }}>
+//       <div className="container">
+//         {showAllCoursesHeader && (
+//           <h3 className="text-center mb-4 fw-bold text-dark">
+//             All Foundation Courses
+//           </h3>
+//         )}
+
+//         <div className="row g-4">
+//           {filteredCourses.length > 0 ? (
+//             filteredCourses.map((course) => {
+//               const courseId = course._id || course.id;
+//               const imageSrc = Array.isArray(course.images)
+//                 ? course.images[0]
+//                 : course.images;
+
+//               return (
+//                 <div className="col-md-6" key={courseId}>
+//                   <Card className="h-100 shadow-sm border-0">
+//                     <Card.Img
+//                       variant="top"
+//                       src={imageSrc}
+//                       alt="Course"
+//                       style={{ height: "250px", objectFit: "cover" }}
+//                     />
+//                     <Card.Body className="p-3">
+//                       <div className="d-flex align-items-center justify-content-center">
+//                         <span className="text-center fw-bold fs-5">
+//                           {course.subCategory?.name || "N/A"}
+//                         </span>
+//                       </div>
+//                       <Card.Title className="fs-5 text-primary mb-2">
+//                         {course.title}
+//                       </Card.Title>
+//                       <div className="small">
+//                         <CourseDetail
+//                           label="Judiciary:"
+//                           value={course?.subsubCategory?.name}
+//                         />
+//                         <CourseDetail
+//                           label="Price:"
+//                           value={`₹ ${course.Price}`}
+//                         />
+//                         <CourseDetail
+//                           label="Duration:"
+//                           value={course.Durations}
+//                         />
+//                         <CourseDetail
+//                           label="Faculty:"
+//                           value={course.TrainerName}
+//                         />
+//                         <CourseDetail
+//                           label="Type:"
+//                           value={course.category?.name}
+//                         />
+//                       </div>
+//                     </Card.Body>
+//                     <Card.Footer className="bg-white border-0 p-3 pt-0">
+//                       <Link
+//                         to={`/courses/${courseId}`}
+//                         className="btn w-100 mb-2"
+//                         style={{ backgroundColor: "#C81A1E", color: "white" }}
+//                       >
+//                         View Details
+//                       </Link>
+//                       <div className="d-flex gap-2">
+//                         <Button
+//                           variant="outline-danger"
+//                           className="w-50 btn-sm"
+//                         >
+//                           Free Demo
+//                         </Button>
+//                         <Link className="w-50" to={`/courses/${courseId}`}>
+//                           <Button
+//                             variant="outline-dark"
+//                             className="w-100 btn-sm"
+//                           >
+//                             Explore
+//                           </Button>
+//                         </Link>
+//                       </div>
+//                     </Card.Footer>
+//                   </Card>
+//                 </div>
+//               );
+//             })
+//           ) : (
+//             <NoCoursesFound
+//               hasSelection={
+//                 !!(courseId || selectedCategoryId || selectedSubCategoryId)
+//               }
+//               onRetry={fetchCourses}
+//             />
+//           )}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// const CourseDetail = ({ label, value }) => (
+//   <div className="d-flex justify-content-between">
+//     <span className="fw-semibold">{label}</span>
+//     <span>{value || "N/A"}</span>
+//   </div>
+// );
+
+// const NoCoursesFound = ({ hasSelection, onRetry }) => (
+//   <div className="col-12 text-center py-5">
+//     <h5>No courses found {hasSelection ? "for this selection" : ""}</h5>
+//     {!hasSelection && (
+//       <Button variant="primary" onClick={onRetry} className="mt-3">
+//         Retry Loading Courses
+//       </Button>
+//     )}
+//   </div>
+// );
+
+// export default FoundationCourses;
+
 import React, { useState, useEffect } from "react";
 import { Card, Button } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
@@ -875,57 +1477,246 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const FoundationCourses = ({ selectedCategoryId, selectedSubCategoryId }) => {
+const FoundationCourses = ({
+  selectedCategoryId,
+  selectedSubCategoryId,
+  useNewFilter = false ,
+}) => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(false);
   const [filteredCourses, setFilteredCourses] = useState([]);
   const { id: courseId } = useParams();
 
-  const fetchCourses = async () => {
-    setLoading(true);
-    try {
-      const { data } = await axios.get(
-        "https://alic-website-2-1.onrender.com/api/alldisplay"
-      );
-      if (data) {
-        setCourses(data);
-        filterCourses(
-          data,
-          selectedCategoryId,
-          courseId || selectedSubCategoryId
-        );
-      }
-    } catch (error) {
-      console.error("Error fetching courses:", error);
-      toast.error("Failed to load courses. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  };
+  // const fetchCourses = async () => {
+  //   setLoading(true);
+  //   try {
+  //     const { data } = await axios.get("http://localhost:8000/api/alldisplay");
+  //     if (data) {
+  //       console.log("Fetched courses:", data.length);
+  //       setCourses(data);
+  //       filterCourses(data);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching courses:", error);
+  //     toast.error("Failed to load courses. Please try again.");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
-  const filterCourses = (coursesList, categoryId, subCategoryId) => {
-    let filtered = coursesList;
-    console.log(filtered, "filterCourses");
+
+//   const fetchCourses = async () => {
+//   setLoading(true);
+//   try {
+//     const { data } = await axios.get("http://localhost:8000/api/alldisplay");
+    
+//     if (data) {
+//       // Filter only Live Courses
+//       const liveCourses = data.filter(course => {
+//         const categoryName = typeof course.category === "object" 
+//           ? course.category?.name 
+//           : course.category;
+//         return categoryName === "Live Course" || "Recorded Course";;
+//       });
+
+//       console.log("Fetched live courses:", liveCourses.length);
+//       setCourses(liveCourses);
+//       filterCourses(liveCourses);
+//     }
+//   } catch (error) {
+//     console.error("Error fetching courses:", error);
+//     toast.error("Failed to load courses. Please try again.");
+//   } finally {
+//     setLoading(false);
+//   }
+// };
+
+
+const fetchCourses = async () => {
+  setLoading(true);
+  try {
+    const { data } = await axios.get("http://localhost:8000/api/alldisplay");
+
+    if (data && Array.isArray(data)) {
+      // Log all course category names to debug
+      data.forEach(course => {
+        const categoryName = typeof course.category === "object"
+          ? course.category?.name
+          : course.category;
+        console.log("Course category:", categoryName);
+      });
+
+      // Step 1: Try Live Courses
+      const liveCourses = data.filter(course => {
+        const categoryName = typeof course.category === "object"
+          ? course.category?.name?.trim()
+          : course.category?.trim();
+        return categoryName === "Live Course";
+      });
+
+      let finalCourses = [];
+
+      if (liveCourses.length > 0) {
+        finalCourses = liveCourses;
+        console.log("✅ Showing Live Courses:", liveCourses.length);
+      } else {
+        // Step 2: Fallback to Recorded Courses
+        const recordedCourses = data.filter(course => {
+          const categoryName = typeof course.category === "object"
+            ? course.category?.name?.trim()
+            : course.category?.trim();
+          return categoryName === "Recorded Course";
+        });
+
+        finalCourses = recordedCourses;
+        console.log("⚠️ No Live Courses. Showing Recorded Courses:", recordedCourses.length);
+      }
+
+      setCourses(finalCourses);
+      filterCourses(finalCourses);
+    } else {
+      toast.error("Invalid course data received.");
+    }
+  } catch (error) {
+    console.error("❌ Error fetching courses:", error);
+    toast.error("Failed to load courses. Please try again.");
+  } finally {
+    setLoading(false);
+  }
+};
+
+
+  // const filterCourses = (coursesList) => {
+  //   let filtered = [...coursesList];
+
+  //   console.log("Filtering with:", {
+  //     selectedCategoryId,
+  //     selectedSubCategoryId,
+  //     courseId,
+  //     totalCourses: coursesList.length,
+  //   });
+
+  //   if (useNewFilter) {
+  //     if (selectedCategoryId) {
+  //       filtered = filtered.filter(
+  //         (course) =>
+  //           course.category &&
+  //           course.category._id?.toString() === selectedCategoryId.toString()
+  //       );
+  //     }
+
+  //     filtered = filtered.filter((course) => {
+  //       console.log(
+  //         "Filtering course:",
+  //         course.subCategory?._id,
+  //         "vs",
+  //         selectedSubCategoryId
+  //       );
+  //       return (
+  //         course.subCategory &&
+  //         course.subCategory._id?.toString() ===
+  //           selectedSubCategoryId.toString()
+  //       );
+  //     });
+
+  //     if (courseId) {
+  //       filtered = filtered.filter(
+  //         (course) =>
+  //           course._id?.toString() === courseId.toString() ||
+  //           course.subsubCategory?._id?.toString() === courseId.toString()
+  //       );
+  //     }
+  //   } else {
+  //     if (courseId) {
+  //       filtered = filtered.filter(
+  //         (course) =>
+  //           course.subsubCategory?._id?.toString() === courseId.toString()
+  //       );
+  //     } else if (selectedCategoryId) {
+  //       filtered = filtered.filter(
+  //         (course) =>
+  //           course.category &&
+  //           course.category._id?.toString() === selectedCategoryId.toString()
+  //       );
+  //     }
+  //   }
+
+  //   console.log("Filtered result count:", filtered.length);
+  //   setFilteredCourses(filtered);
+  // };
+
+
+const filterCourses = (coursesList) => {
+  let filtered = [...coursesList];
+
+  console.log("Filtering with:", {
+    selectedCategoryId,
+    selectedSubCategoryId,
+    courseId,
+    totalCourses: coursesList.length,
+  });
+
+  if (useNewFilter) {
+    if (selectedCategoryId) {
+      filtered = filtered.filter(
+        (course) =>
+          course.category &&
+          course.category._id?.toString() === selectedCategoryId?.toString()
+      );
+    }
+
+    if (selectedSubCategoryId) {
+      filtered = filtered.filter((course) => {
+        console.log(
+          "Filtering course:",
+          course.subCategory?._id,
+          "vs",
+          selectedSubCategoryId
+        );
+        return (
+          course.subCategory &&
+          course.subCategory._id?.toString() === selectedSubCategoryId?.toString()
+        );
+      });
+    }
+
     if (courseId) {
       filtered = filtered.filter(
-        (course) => course?.subsubCategory?._id === courseId
-      );
-    } else if (categoryId) {
-      filtered = filtered.filter(
-        (course) => course.category?._id === categoryId
+        (course) =>
+          course._id?.toString() === courseId?.toString() ||
+          course.subsubCategory?._id?.toString() === courseId?.toString()
       );
     }
+  } else {
+    if (courseId) {
+      filtered = filtered.filter(
+        (course) =>
+          course.subsubCategory?._id?.toString() === courseId?.toString()
+      );
+    } else if (selectedCategoryId) {
+      filtered = filtered.filter(
+        (course) =>
+          course.category &&
+          course.category._id?.toString() === selectedCategoryId?.toString()
+      );
+    }
+  }
 
-    console.log(courseId, "courseId");
-    console.log(subCategoryId, "subCategoryId");
-    console.log(categoryId, "categoryId");
+  console.log("Filtered result count:", filtered.length);
+  setFilteredCourses(filtered);
+};
 
-    setFilteredCourses(filtered);
-  };
+
 
   useEffect(() => {
     fetchCourses();
-  }, [courseId, selectedCategoryId, selectedSubCategoryId]);
+  }, []);
+
+  useEffect(() => {
+    if (courses.length > 0) {
+      filterCourses(courses);
+    }
+  }, [selectedCategoryId, selectedSubCategoryId, courseId]);
 
   if (loading) {
     return (
@@ -959,7 +1750,6 @@ const FoundationCourses = ({ selectedCategoryId, selectedSubCategoryId }) => {
 
               return (
                 <div className="col-md-6" key={courseId}>
-                  {/* <h3>AAAAAA</h3> */}
                   <Card className="h-100 shadow-sm border-0">
                     <Card.Img
                       variant="top"
@@ -974,7 +1764,7 @@ const FoundationCourses = ({ selectedCategoryId, selectedSubCategoryId }) => {
                         </span>
                       </div>
                       <Card.Title className="fs-5 text-primary mb-2">
-                        {course.title}
+                        {course.Coursename || course.title}
                       </Card.Title>
                       <div className="small">
                         <CourseDetail
